@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie de Produits - Codez le Vibe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header avec basculeur de thème -->
+        <header class="header">
+            <h1 class="title">Galerie de Produits</h1>
+            <div class="header-controls">
+                <!-- Barre de recherche -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Rechercher un produit..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+                
+                <!-- Filtres -->
+                <div class="filters-container">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">Toutes les catégories</option>
+                        <option value="electronique">Électronique</option>
+                        <option value="sport">Sport</option>
+                        <option value="mode">Mode</option>
+                    </select>
+                    
+                    <select id="priceFilter" class="filter-select">
+                        <option value="">Tous les prix</option>
+                        <option value="0-100">0€ - 100€</option>
+                        <option value="100-200">100€ - 200€</option>
+                        <option value="200+">200€+</option>
+                    </select>
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-text">Mode sombre</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Galerie de produits -->
+        <main class="gallery">
+            <div class="product-card" data-product="1" data-category="electronique" data-price="299" data-brand="AudioTech">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Casque audio premium">
+                    <div class="card-overlay">
+                        <button class="view-btn">Voir détails</button>
+                        <button class="favorite-btn" data-favorite="false">❤️</button>
+                    </div>
+                    <div class="product-badge">Nouveau</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">Casque Audio Premium</h3>
+                    <p class="product-description">Qualité sonore exceptionnelle avec réduction de bruit active</p>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text">(4.8/5)</span>
+                    </div>
+                    <div class="product-price">299€</div>
+                    <button class="add-to-cart">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product="2" data-category="electronique" data-price="199" data-brand="SmartWatch Pro">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Montre connectée">
+                    <div class="card-overlay">
+                        <button class="view-btn">Voir détails</button>
+                        <button class="favorite-btn" data-favorite="false">❤️</button>
+                    </div>
+                    <div class="product-badge sale">-20%</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">Montre Connectée</h3>
+                    <p class="product-description">Suivi de santé avancé et notifications intelligentes</p>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text">(4.6/5)</span>
+                    </div>
+                    <div class="product-price">199€</div>
+                    <button class="add-to-cart">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-product="3" data-category="sport" data-price="149" data-brand="SportMax">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Chaussures de sport">
+                    <div class="card-overlay">
+                        <button class="view-btn">Voir détails</button>
+                        <button class="favorite-btn" data-favorite="false">❤️</button>
+                    </div>
+                    <div class="product-badge">Populaire</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="product-title">Chaussures de Sport</h3>
+                    <p class="product-description">Confort maximal et performance optimale pour tous vos entraînements</p>
+                    <div class="product-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-text">(4.9/5)</span>
+                    </div>
+                    <div class="product-price">149€</div>
+                    <button class="add-to-cart">Ajouter au panier</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Panier flottant -->
+        <div class="cart-floating" id="cartFloating">
+            <div class="cart-icon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <div class="cart-total" id="cartTotal">0€</div>
+        </div>
+        
+        <!-- Modal du panier -->
+        <div class="cart-modal" id="cartModal">
+            <div class="cart-modal-content">
+                <div class="cart-header">
+                    <h3>Mon Panier</h3>
+                    <button class="close-cart" id="closeCart">✕</button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <p class="empty-cart">Votre panier est vide</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total-price">Total: <span id="cartTotalPrice">0€</span></div>
+                    <button class="checkout-btn">Commander</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de détails produit -->
+        <div class="product-modal" id="productModal">
+            <div class="product-modal-content">
+                <button class="close-modal" id="closeModal">✕</button>
+                <div class="modal-product-info" id="modalProductInfo">
+                    <!-- Contenu dynamique -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
